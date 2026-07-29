@@ -1,0 +1,310 @@
+alarminsight-argo:
+  enabled: true
+  application:
+    chartname: eventbroker
+    autodeploy: false
+
+eventbroker:
+  # keycloak:
+  #   host: insight.abb.com
+  image:
+    repository: "paenglobal.azurecr.io/alarminsight/event-broker-3"
+    tag: "3.1.1.33"
+  ingress:
+    enabled: false
+  global:
+    oidc:
+      host: energy.ability.abb
+
+  settings:
+    appSettingsJson:
+      locations:
+        #DEMO ****************************************************************************************
+        - name: adnoc
+          type: sql
+          connection:
+            connectionString: "Server=tcp:coc-eu-production-sqlserver.database.windows.net,1433;Initial Catalog=EventBroker-adnoc;Persist Security Info=False;User ID=eventbrokeradnocuser;Password=9832#IRJ2083RawE;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=True;Connection Timeout=240;"
+            user: "eventbrokeradnocuser"
+            password: "9832#IRJ2083RawE"
+          events:
+            use: true
+            view: dbo.BaseEvents
+          alarms:
+            use: true
+            view: dbo.BaseEvents
+            alarmPriorities: 1,2,3,4
+            defaultFilter: false
+          filters:
+            - name: operatorAlarmList
+              eventCategory: 2888472444,1429859357,2632118662,626678824,666371,792944717,345733597
+            - name: standingAlarms
+              rawQuery: newState:(1 OR 3 OR 5)
+            - name: processEvents
+              eventCategoryType: 0
+          severityRanges:
+            - priority: 1
+              from: 901
+              to: 1000
+              isAlarm: true
+            - priority: 2
+              from: 801
+              to: 900
+              isAlarm: true
+            - priority: 3
+              from: 701
+              to: 800
+              isAlarm: true
+            - priority: 4
+              from: 0
+              to: 700
+              isAlarm: false
+          eventCategories:
+            - category: 72983640 # OPC_SERVER_ERROR  Ads OPC Event Server
+              categoryType:
+              eventType: 1
+            - category: 141775883 # AssetOptimizationMsg_ABB 800xA System Message Server
+              categoryType:
+              eventType: 1
+            - category: 345733597 # Maestro Limit Events(Simple)
+              categoryType:
+              eventType: 1
+            - category: 751470018 # Default Class/Storage
+              categoryType:
+              eventType: 1
+            - category: 776393857 # Maestro System Messages(Simple)
+              categoryType:
+              eventType: 1
+            - category: 946276656 # System Event for SoftAlarms
+              categoryType:
+              eventType: 1
+            - category: 1012162887 # IM History
+              categoryType:
+              eventType: 1
+            - category: 1120438464 # OPC_SERVER_ERROR  OPC AE Server for AC 800M
+              categoryType:
+              eventType: 1
+            - category: 1255806746 # Services
+              categoryType:
+              eventType: 1
+            - category: 1520456669 # Service Operation_ABB 800xA System Message Server
+              categoryType:
+              eventType: 1
+            - category: 1640757224 # OPC_SERVER_ERROR  Harmony AE Server
+              categoryType:
+              eventType: 1
+            - category: 1895756325 # Network Messages
+              categoryType:
+              eventType: 1
+            - category: 1901419067 # OPC_SERVER_ERROR  ByPassAlarmOPCServer Class
+              categoryType:
+              eventType: 1
+            - category: 1987469564 # ITPNSMMonitoring_ABB 800xA System Message Server
+              categoryType:
+              eventType: 1
+            - category: 2108851391 # System Simple Event
+              categoryType:
+              eventType: 1
+            - category: 2236016072 # Maestro Deviation Events(Simple)
+              categoryType:
+              eventType: 1
+            - category: 2278531776 # Process Data To Simple Event
+              categoryType:
+              eventType: 1
+            - category: 2405980659 # License Management
+              categoryType:
+              eventType: 1
+            - category: 2494138614 # Select On event
+              categoryType:
+              eventType: 1
+            - category: 2590833885 # System Administration
+              categoryType:
+              eventType: 1
+            - category: 2612370170 # User Annotation
+              categoryType:
+              eventType: 1
+            - category: 2664133444 # Select Off event
+              categoryType:
+              eventType: 1
+            - category: 2670429646 # Windows Events
+              categoryType:
+              eventType: 1
+            - category: 3000937834 # Maestro Gradient Events(Simple)
+              categoryType:
+              eventType: 1
+            - category: 3184917228 # System Status
+              categoryType:
+              eventType: 1
+            - category: 3355501868 # AfwCalibration
+              categoryType:
+              eventType: 1
+            - category: 3439269159 # Process Simple Event
+              categoryType:
+              eventType: 1
+            - category: 3476110531 # OPC_SERVER_ERROR
+              categoryType:
+              eventType: 1
+            - category: 3907453624 # Operation
+              categoryType:
+              eventType: 1
+            - category: 4122771238 # SoftAlarm(Simple)
+              categoryType:
+              eventType: 1
+            - category: 4181808769 # Maestro Boolean Changes(Simple)
+              categoryType:
+              eventType: 1
+            - category: 4200723875 # ITAssetTrapMessages_ABB 800xA System Message Server
+              categoryType:
+              eventType: 1
+            - category: 4209395748 # Process Event for SoftAlarms
+              categoryType:
+              eventType: 1
+            - category: 144242884 # AuditEvent_Restore
+              categoryType:
+              eventType: 2
+            - category: 258573808 # Maestro Limit Events(Tracking)
+              categoryType:
+              eventType: 2
+            - category: 395820751 # AuditEvent_Backup
+              categoryType:
+              eventType: 2
+            - category: 416253799 # Maestro Boolean Changes(Tracking)
+              categoryType:
+              eventType: 2
+            - category: 437235967 # AuditEvent_AspectDirectory
+              categoryType:
+              eventType: 2
+            - category: 443737213 # Message_FDTOPC
+              categoryType:
+              eventType: 2
+            - category: 502365180 # Select Unforced event
+              categoryType:
+              eventType: 2
+            - category: 617833666 # AuditEvent_ConfigurationChange
+              categoryType:
+              eventType: 2
+            - category: 630694100 # AuditEvent_AC800MStatusMonitoring_ABB 800xA System Message Server
+              categoryType:
+              eventType: 2
+            - category: 672438957 # AuditEvent_Security
+              categoryType:
+              eventType: 2
+            - category: 792296265 # Maestro Deviation Events(Tracking)
+              categoryType:
+              eventType: 2
+            - category: 976560972 # Select Controlled event
+              categoryType:
+              eventType: 2
+            - category: 1178462185 # AuditEvent_CMMS
+              categoryType:
+              eventType: 2
+            - category: 1448854568 # AuditEvent_Calibration
+              categoryType:
+              eventType: 2
+            - category: 1483603767 # Select Controldisabled event
+              categoryType:
+              eventType: 2
+            - category: 1506638285 # AuditEvent_ConfigurationViewChange
+              categoryType:
+              eventType: 2
+            - category: 1525730368 # AuditEvent_System
+              categoryType:
+              eventType: 2
+            - category: 1597075180 # AuditEvent_Acknowledge
+              categoryType:
+              eventType: 2
+            - category: 1653890582 # Select Controlenabled event
+              categoryType:
+              eventType: 2
+            - category: 1804824724 # AuditEvent_FDTOPC
+              categoryType:
+              eventType: 2
+            - category: 2149070892 # AuditEvent_FDT
+              categoryType:
+              eventType: 2
+            - category: 2309773905 # AuditEvent_OPCHDAUpdate
+              categoryType:
+              eventType: 2
+            - category: 2911410489 # Maestro System Messages(Tracking)
+              categoryType:
+              eventType: 2
+            - category: 2953026639 # AuditEvent_ConfigureSystem
+              categoryType:
+              eventType: 2
+            - category: 3086472098 # Maestro Gradient Events(Tracking)
+              categoryType:
+              eventType: 2
+            - category: 3204168103 # Select Forced event
+              categoryType:
+              eventType: 2
+            - category: 3436112953 # AuditEvent_OperatorAction
+              categoryType:
+              eventType: 2
+            - category: 3604754304 # AuditEvent_ForcedChange
+              categoryType:
+              eventType: 2
+            - category: 3774618308 # AuditEvent_Import
+              categoryType:
+              eventType: 2
+            - category: 3896340947 # AuditEvent_Deploy
+              categoryType:
+              eventType: 2
+            - category: 3928035002 # AuditEvent_Upload
+              categoryType:
+              eventType: 2
+            - category: 666371 # Process Condition Event
+              categoryType:
+              eventType: 4
+            - category: 69781140 # Process Alarm for SoftAlarms
+              categoryType:
+              eventType: 4
+            - category: 227393985 # System Alarm for GroupAlarms
+              categoryType:
+              eventType: 4
+            - category: 582040990 # SoftAlarm(Condition)
+              categoryType:
+              eventType: 4
+            - category: 699344173 # ByPass Condition Events
+              categoryType:
+              eventType: 4
+            - category: 845602746 # Maestro Boolean Changes(Condition)
+              categoryType:
+              eventType: 4
+            - category: 1928697681 # Process Alarm for GroupAlarms
+              categoryType:
+              eventType: 4
+            - category: 2109559764 # System Alarms
+              categoryType:
+              eventType: 4
+            - category: 2215437065 # Asset Condition Alarm
+              categoryType:
+              eventType: 4
+            - category: 2372558679 # Maestro Deviation Events(Condition)
+              categoryType:
+              eventType: 4
+            - category: 2888472444 # Alarm Expressions
+              categoryType:
+              eventType: 4
+            - category: 2965087562 # System Condition Event
+              categoryType:
+              eventType: 4
+            - category: 3302424657 # IT Asset Alarms
+              categoryType:
+              eventType: 4
+            - category: 3332999040 # System Alarm for SoftAlarms
+              categoryType:
+              eventType: 4
+            - category: 3375175823 # Select Event Category
+              categoryType:
+              eventType: 4
+            - category: 3798513133 # Maestro Limit Events(Condition)
+              categoryType:
+              eventType: 4
+            - category: 3907896932 # Maestro Gradient Events(Condition)
+              categoryType:
+              eventType: 4
+            - category: 3964741444 # Maestro System Messages(Condition)
+              categoryType:
+              eventType: 4
+            - category: 4236526523 # Asset Monitoring Status Alarm
+              categoryType:
+              eventType: 4

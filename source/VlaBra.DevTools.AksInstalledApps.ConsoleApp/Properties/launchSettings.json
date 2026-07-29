@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "VlaBra.DevTools.AksInstalledApps.Console": {
+      "commandName": "Project",
+      "commandLineArgs": "c:\\Dev\\git-ogp2\\iaen-orbit\\grass-production c:\\Dev\\git-ogp2\\iaen-orbit\\grass-staging"
+    }
+  }
+}

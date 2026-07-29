@@ -1,0 +1,8 @@
+apiVersion: v2
+name: argodeploy
+version: 1.0.0
+description: Argocd requires value files and chart in the same repo. To work around this limitation we use this placeholder chart
+dependencies:
+  - name: eventbroker
+    version: 3.1.1
+    repository: oci://paenglobal.azurecr.io/helm/alarminsight
