@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "VlaBra.DevTools.NiceCopilotChat.ConsoleApp": {
+      "commandName": "Project",
+      "commandLineArgs": ""
+    }
+  }
+}

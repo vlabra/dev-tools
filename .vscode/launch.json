@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "NiceCopilotChat",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/source/VlaBra.DevTools.NiceCopilotChat.ConsoleApp/bin/Debug/net10.0/nice-copilot-chat.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/source/VlaBra.DevTools.NiceCopilotChat.ConsoleApp",
+            "console": "externalConsole",
+            "stopAtEntry": false
+        }
+    ]
+}
