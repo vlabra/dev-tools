@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
-using YamlDotNet.RepresentationModel;
+using VlaBra.DevTools.AksInstalledApps;
 
 namespace VlaBra.DevTools.AksInstalledApps.ConsoleApp
 {

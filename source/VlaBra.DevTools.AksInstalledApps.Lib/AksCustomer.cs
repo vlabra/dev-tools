@@ -1,4 +1,4 @@
-﻿namespace VlaBra.DevTools.AksInstalledApps.ConsoleApp
+namespace VlaBra.DevTools.AksInstalledApps
 {
     public class AksCustomer : AksItemBase, IReadOnlyCollection<AksDeployment>
     {

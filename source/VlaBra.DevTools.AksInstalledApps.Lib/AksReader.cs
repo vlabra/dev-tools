@@ -1,9 +1,7 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Xml.Linq;
-using YamlDotNet.Core;
+using System.Diagnostics.CodeAnalysis;
 using YamlDotNet.RepresentationModel;
 
-namespace VlaBra.DevTools.AksInstalledApps.ConsoleApp
+namespace VlaBra.DevTools.AksInstalledApps
 {
 
     public class AksReader
@@ -107,8 +105,6 @@ namespace VlaBra.DevTools.AksInstalledApps.ConsoleApp
 
         }
 
-
-
         private void ProcessCustomer(AksCluster cluster, string customerFolder)
         {
             var customerName = Path.GetFileName(customerFolder);
@@ -124,8 +120,6 @@ namespace VlaBra.DevTools.AksInstalledApps.ConsoleApp
                 ProcessApplicationRecursive(customer, customerFolder, applicationFolder, 0);
             }
         }
-
-
 
         private void ProcessApplicationRecursive(AksCustomer customer, string customerFolder, string applicationFolder, int depth)
         {
@@ -171,52 +165,9 @@ namespace VlaBra.DevTools.AksInstalledApps.ConsoleApp
             }
 
             //var imageVersion = ProcessValuesYaml(charts, valuesYamlPath);
-
-
         }
 
-        //private void ProcessValuesYaml(IEnumerable<(string? ChartName, string? Version)> charts, string? valuesYamlPath)
-        //{
-        //    if (valuesYamlPath == null)
-        //    {
-        //        return;
-        //    }
-
-        //    using var reader = new StreamReader(valuesYamlPath);
-        //    var yaml = new YamlStream();
-        //    yaml.Load(reader);
-
-        //    if (yaml.Documents.Count == 0)
-        //    {
-        //        yield break;
-        //    }
-
-        //    if (yaml.Documents[0].RootNode is not YamlMappingNode root)
-        //    {
-        //        yield break;
-        //    }
-
-
-        //    if (!root.Children.TryGetValue(new YamlScalarNode(imageName), out var imageNameNode)
-        //        || imageNameNode is not YamlMappingNode imageNameMapping)
-        //    {
-        //        return null;
-        //    }
-
-        //    if (!imageNameMapping.Children.TryGetValue(new YamlScalarNode("image"), out var imageNode)
-        //        || imageNode is not YamlMappingNode imageMapping)
-        //    {
-        //        return null;
-        //    }
-
-        //    if (!imageMapping.Children.TryGetValue(new YamlScalarNode("tag"), out var tagNode)
-        //        || tagNode is not YamlScalarNode tagScalar)
-        //    {
-        //        return null;
-        //    }
-
-        //    return tagScalar.Value;
-        //}
+        // NOTE: ProcessValuesYaml is commented out (incomplete implementation)
 
         private IEnumerable<(string ChartName, string? Version)> ProcessChartsYaml(string chartYamlPath)
         {

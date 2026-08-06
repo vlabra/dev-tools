@@ -1,4 +1,6 @@
 <Solution>
   <Project Path="source/VlaBra.DevTools.AksInstalledApps.ConsoleApp/VlaBra.DevTools.AksInstalledApps.ConsoleApp.csproj" />
+  <Project Path="source/VlaBra.DevTools.AksInstalledApps.Lib/VlaBra.DevTools.AksInstalledApps.Lib.csproj" />
   <Project Path="source/VlaBra.DevTools.NiceCopilotChat.ConsoleApp/VlaBra.DevTools.NiceCopilotChat.ConsoleApp.csproj" />
+  <Project Path="source/VlaBra.DevTools.NiceCopilotChat.Lib/VlaBra.DevTools.NiceCopilotChat.Lib.csproj" />
 </Solution>

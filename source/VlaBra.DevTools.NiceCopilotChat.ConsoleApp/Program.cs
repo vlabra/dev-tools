@@ -1,4 +1,5 @@
 using System;
+using VlaBra.DevTools.NiceCopilotChat;
 
 namespace VlaBra.DevTools.NiceCopilotChat.ConsoleApp
 {

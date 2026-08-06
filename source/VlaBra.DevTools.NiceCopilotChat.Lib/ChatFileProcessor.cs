@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace VlaBra.DevTools.NiceCopilotChat.ConsoleApp
+namespace VlaBra.DevTools.NiceCopilotChat
 {
     /// <summary>
     /// Reads an exported Copilot chat markdown file, cleans it up line by line and overwrites it in place.

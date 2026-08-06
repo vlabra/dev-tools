@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="YamlDotNet" Version="13.7.1" />
+    <ProjectReference Include="..\VlaBra.DevTools.AksInstalledApps.Lib\VlaBra.DevTools.AksInstalledApps.Lib.csproj" />
   </ItemGroup>
 
 </Project>

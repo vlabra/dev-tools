@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace VlaBra.DevTools.NiceCopilotChat.ConsoleApp
+namespace VlaBra.DevTools.NiceCopilotChat
 {
     /// <summary>
     /// Resolves command-line path arguments into a de-duplicated list of markdown <see cref="FileInfo"/> instances.
